@@ -19,7 +19,9 @@ nodes.forEach(node => {
     modal.classList.add("modal-open");
     origImg.classList.add("img-open");
 
-    coords = coords.concat({xPos, yPos});
+    if (coords[coords.length - 1] != {xPos, yPos}) {
+      coords.push({xPos, yPos});
+    }
 
     const id = event.target.id;
     
