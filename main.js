@@ -26,8 +26,6 @@ nodes.forEach(node => {
     origImg.src = `assets/pic${id}-min.jpg`;
     origImg.dataset.src = `assets/pic${id}.jpg`;
 
-    console.log(origImg);
-
     origImg.onload = () => {
       return origImg.src = origImg.dataset.src;
     }
@@ -42,13 +40,22 @@ modal.addEventListener('click', (event) => {
   }
   // update map
   if (coords.length >= 2) {
+    const offset = 6;
     const line = document.createElementNS(svgNS,'line');
-    line.setAttribute('x1', coords[coords.length - 2].xPos + 6);
-    line.setAttribute('y1', coords[coords.length - 2].yPos + 6);
-    line.setAttribute('x2', coords[coords.length - 1].xPos + 6);
-    line.setAttribute('y2', coords[coords.length - 1].yPos + 6);
+    line.setAttribute('x1', coords[coords.length - 2].xPos + offset);
+    line.setAttribute('y1', coords[coords.length - 2].yPos + offset);
+    line.setAttribute('x2', coords[coords.length - 1].xPos + offset);
+    line.setAttribute('y2', coords[coords.length - 1].yPos + offset);
     line.setAttribute('stroke', 'black');
     line.setAttribute('stroke-width', 3);
+    line.setAttribute('class', 'mapPath');
     map.append(line);
+
+    const paths = document.querySelectorAll('.mapPath');
+
+    paths.forEach(path => {
+      path.style.strokeDasharray = path.getTotalLength();
+      path.style.strokeDashoffset = path.getTotalLength();
+    })
   }
 });
