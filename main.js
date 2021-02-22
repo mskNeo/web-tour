@@ -27,7 +27,6 @@ nodes.forEach(node => {
       coords.pop();
     }
 
-    console.log(coords);
     const id = event.target.id;
     
     // set image to the minified version
