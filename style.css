@@ -57,5 +57,5 @@
 }
 
 .mapPath {
-  animation: dash 3s cubic-bezier(0.785, 0.135, 0.15, 0.86) forwards;
+  animation: dash 3s cubic-bezier(0.785, 0.435, 0.46, 0.86) forwards;
 }
