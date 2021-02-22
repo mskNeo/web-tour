@@ -19,15 +19,22 @@ nodes.forEach(node => {
     modal.classList.add("modal-open");
     origImg.classList.add("img-open");
 
-    if (coords[coords.length - 1] != {xPos, yPos}) {
-      coords.push({xPos, yPos});
+    // add xPos and yPos of node to coords
+    coords.push({xPos, yPos});
+
+    // make sure clicks on the same node repeatedly doesn't update the coords array
+    if ((coords.length > 1) && (JSON.stringify(coords[coords.length - 1]) == JSON.stringify(coords[coords.length - 2]))) {
+      coords.pop();
     }
 
+    console.log(coords);
     const id = event.target.id;
     
+    // set image to the minified version
     origImg.src = `assets/pic${id}-min.jpg`;
     origImg.dataset.src = `assets/pic${id}.jpg`;
 
+    // once image is loaded, switch to full image
     origImg.onload = () => {
       return origImg.src = origImg.dataset.src;
     }
@@ -53,6 +60,7 @@ modal.addEventListener('click', (event) => {
     line.setAttribute('class', 'mapPath');
     map.append(line);
 
+    // set up paths in map to be animated
     const paths = document.querySelectorAll('.mapPath');
 
     paths.forEach(path => {
