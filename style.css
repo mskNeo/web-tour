@@ -24,21 +24,22 @@
   height: 100%;
   opacity: 0;
   pointer-events: none;
-  transition: all 1s ease;
+  transition: all 1.2s ease;
 }
 
 .full-img {
-  /* height: 70%; */
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0.1);
-  transition: all 1s ease-out;
+  transform: translate(-50%, -50%) scale(0);
+  transition: all 1.2s ease-out;
+  cursor: default;
 }
 
 .modal-open {
   opacity: 1;
   pointer-events: all;
+  cursor: pointer;
 }
 
 .img-open {
