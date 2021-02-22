@@ -22,7 +22,15 @@ nodes.forEach(node => {
     coords = coords.concat({xPos, yPos});
 
     const id = event.target.id;
-    origImg.src = `assets/pic${id}.jpg`;
+    
+    origImg.src = `assets/pic${id}-min.jpg`;
+    origImg.dataset.src = `assets/pic${id}.jpg`;
+
+    console.log(origImg);
+
+    origImg.onload = () => {
+      return origImg.src = origImg.dataset.src;
+    }
   });
 });
 
