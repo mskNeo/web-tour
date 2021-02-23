@@ -26,7 +26,7 @@
   height: 100%;
   opacity: 0;
   pointer-events: none;
-  transition: all 1.2s ease;
+  transition: all 1.7s cubic-bezier(0.655, 0.03, 0.515, 0.955);
 }
 
 .full-img {
@@ -34,7 +34,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
-  transition: all 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+  transition: all 1.7s cubic-bezier(0.655, 0.03, 0.515, 0.955);
   cursor: none;
 }
 
