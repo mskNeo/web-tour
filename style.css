@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -33,7 +35,30 @@
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
   transition: all 1.2s ease-out;
-  cursor: default;
+  cursor: none;
+}
+
+.modal-text {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  opacity: 0;
+  transition: all 0.5s ease;
+  cursor: none;
+}
+
+.modal-text:hover {
+  opacity: 0.9;
+}
+
+#caption {
+  font-size: 2em;
+  font-family: 'Amatic SC', cursive, sans-serif;
+  text-align: center;
 }
 
 .modal-open {
@@ -58,7 +83,7 @@
 }
 
 .mapPath {
-  animation: dash 3s cubic-bezier(0.825, 0.455, 0.56, 0.92) forwards;
+  animation: dash 2s cubic-bezier(0.825, 0.455, 0.56, 0.92) forwards;
 }
 
 @media only screen and (max-width: 800px) {

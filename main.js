@@ -2,6 +2,8 @@ const nodes = document.querySelectorAll('.node');
 const modal = document.querySelector('.modal');
 const origImg = document.querySelector('.full-img');
 const map = document.querySelector('#map');
+const modalText = document.querySelector('.modal-text');
+const caption = document.querySelector('#caption');
 const svgNS = map.namespaceURI;
 const padding = 20;
 
@@ -28,10 +30,22 @@ nodes.forEach(node => {
     }
 
     const id = event.target.id;
+    let text = event.target.dataset.text;
     
     // set image to the minified version
     origImg.src = `assets/pic${id}-min.jpg`;
     origImg.dataset.src = `assets/pic${id}.jpg`;
+    origImg.alt = text;
+    caption.innerHTML = text;
+
+    // animate hover text
+    setTimeout(() => {
+      modalText.style.width = `${origImg.width}px`;
+      modalText.style.height = `${origImg.height}px`;
+      modalText.style.marginLeft = `${(window.innerWidth - origImg.width) / 2}px`;
+      modalText.style.marginTop = `${(window.innerHeight - origImg.height) / 2}px`;
+      modalText.style.transformOrigin = `${(window.innerWidth - origImg.width) / 2 + origImg.width / 2}px ${(window.innerHeight - origImg.height) / 2 + origImg.height / 2}px`;
+    }, 1200);
 
     // once image is loaded, switch to full image
     origImg.onload = () => {
@@ -67,4 +81,6 @@ modal.addEventListener('click', (event) => {
       path.style.strokeDashoffset = path.getTotalLength();
     })
   }
+  modalText.style.width = '0px';
+  modalText.style.height = '0px';
 });
