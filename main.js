@@ -2,7 +2,7 @@ const nodes = document.querySelectorAll('.node');
 const modal = document.querySelector('.modal');
 const origImg = document.querySelector('.full-img');
 const map = document.querySelector('#map');
-const modalText = document.querySelector('.modal-text');
+const modalText = document.querySelector('#modal-text');
 const caption = document.querySelector('#caption');
 const svgNS = map.namespaceURI;
 const padding = 30;
@@ -45,15 +45,14 @@ nodes.forEach(node => {
       modalText.style.marginLeft = `${(window.innerWidth - origImg.width) / 2}px`;
       modalText.style.marginTop = `${(window.innerHeight - origImg.height) / 2}px`;
       modalText.style.transformOrigin = `${(window.innerWidth - origImg.width) / 2 + origImg.width / 2}px ${(window.innerHeight - origImg.height) / 2 + origImg.height / 2}px`;
-    }, 1200);
+    }, 1000);
 
     // once image is loaded, switch to full image
     origImg.onload = () => {
       // add delay so text doesn't show up automatically
       setTimeout(() => {
-        modalText.style.display = 'flex';
-        modalText.style.justifyContent = 'center';
-        modalText.style.alignItems = 'center';
+        modalText.classList.remove('hide');
+        modalText.classList.add('show');
       }, 2000);
       return origImg.src = origImg.dataset.src;
     }
@@ -65,6 +64,8 @@ modal.addEventListener('click', (event) => {
   if (event.target.classList.contains('modal')) {
       modal.classList.remove("modal-open");
       origImg.classList.remove("img-open");
+      modalText.classList.remove('show');
+      modalText.classList.add('hide');
   }
   // update map
   if (coords.length >= 2) {

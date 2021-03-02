@@ -45,7 +45,7 @@ body {
   cursor: none;
 }
 
-.modal-text {
+#modal-text {
   position: absolute;
   z-index: 10;
   background: rgba(0, 0, 0, 0.4);
@@ -55,7 +55,7 @@ body {
   cursor: none;
 }
 
-.modal-text:hover {
+#modal-text:hover {
   opacity: 0.9;
 }
 
@@ -102,4 +102,14 @@ body {
     width: auto;
     height: 80%;
   }
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
