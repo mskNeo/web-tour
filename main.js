@@ -49,6 +49,12 @@ nodes.forEach(node => {
 
     // once image is loaded, switch to full image
     origImg.onload = () => {
+      // add delay so text doesn't show up automatically
+      setTimeout(() => {
+        modalText.style.display = 'flex';
+        modalText.style.justifyContent = 'center';
+        modalText.style.alignItems = 'center';
+      }, 2000);
       return origImg.src = origImg.dataset.src;
     }
   });
@@ -68,7 +74,7 @@ modal.addEventListener('click', (event) => {
     line.setAttribute('y1', coords[coords.length - 2].yPos + offset);
     line.setAttribute('x2', coords[coords.length - 1].xPos + offset);
     line.setAttribute('y2', coords[coords.length - 1].yPos + offset);
-    line.setAttribute('stroke', 'black');
+    line.setAttribute('stroke', 'white');
     line.setAttribute('stroke-width', 3);
     line.setAttribute('class', 'mapPath');
     map.append(line);
@@ -81,6 +87,4 @@ modal.addEventListener('click', (event) => {
       path.style.strokeDashoffset = path.getTotalLength();
     })
   }
-  modalText.style.width = '0px';
-  modalText.style.height = '0px';
 });
