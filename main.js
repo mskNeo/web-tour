@@ -45,17 +45,12 @@ nodes.forEach(node => {
       modalText.style.marginLeft = `${(window.innerWidth - origImg.width) / 2}px`;
       modalText.style.marginTop = `${(window.innerHeight - origImg.height) / 2}px`;
       modalText.style.transformOrigin = `${(window.innerWidth - origImg.width) / 2 + origImg.width / 2}px ${(window.innerHeight - origImg.height) / 2 + origImg.height / 2}px`;
-    }, 1000);
+      modalText.classList.remove('hide');
+      modalText.classList.add('show');
+    }, 2000);
 
     // once image is loaded, switch to full image
-    origImg.onload = () => {
-      // add delay so text doesn't show up automatically
-      setTimeout(() => {
-        modalText.classList.remove('hide');
-        modalText.classList.add('show');
-      }, 2000);
-      return origImg.src = origImg.dataset.src;
-    }
+    origImg.onload = () => origImg.src = origImg.dataset.src;
   });
 });
 

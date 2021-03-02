@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab&display=swap');
 
 * {
   margin: 0;
@@ -42,13 +43,13 @@ body {
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
   transition: all 1.7s cubic-bezier(0.655, 0.03, 0.515, 0.955);
-  cursor: none;
+  pointer-events: none;
 }
 
 #modal-text {
   position: absolute;
   z-index: 10;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.6);
   color: white;
   opacity: 0;
   transition: all 0.5s ease;
@@ -61,7 +62,8 @@ body {
 
 #caption {
   font-size: 2.5em;
-  font-family: 'Amatic SC', cursive, sans-serif;
+  /* font-family: 'Amatic SC', cursive, sans-serif; */
+  font-family: 'Josefin Slab', serif;
   text-align: center;
 }
 
