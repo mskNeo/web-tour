@@ -5,7 +5,7 @@ const map = document.querySelector('#map');
 const modalText = document.querySelector('#modal-text');
 const caption = document.querySelector('#caption');
 const svgNS = map.namespaceURI;
-const padding = 30;
+const padding = 50;
 
 let coords = [];
 
@@ -13,6 +13,9 @@ nodes.forEach(node => {
   // generate random x and y coordinates for nodes upon load
   let xPos = Math.random() * (window.innerWidth - padding);
   let yPos = Math.random() * (window.innerHeight - padding);
+  if (yPos < 50) {
+    yPos = 100;
+  }
   node.style.top = `${yPos}px`;
   node.style.left = `${xPos}px`;
 
@@ -70,8 +73,8 @@ modal.addEventListener('click', (event) => {
     line.setAttribute('y1', coords[coords.length - 2].yPos + offset);
     line.setAttribute('x2', coords[coords.length - 1].xPos + offset);
     line.setAttribute('y2', coords[coords.length - 1].yPos + offset);
-    line.setAttribute('stroke', 'rgb(180, 180, 180)');
-    line.setAttribute('stroke-width', 3);
+    line.setAttribute('stroke', 'whitesmoke');
+    line.setAttribute('stroke-width', 2);
     line.setAttribute('class', 'mapPath');
     map.append(line);
 
