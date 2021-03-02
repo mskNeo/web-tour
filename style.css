@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Slab&display=swap');
+/* @import url("https://use.typekit.net/yfi0cme.css"); Adobe fonts American Typewriter */
 
 * {
   margin: 0;
@@ -61,9 +62,12 @@ body {
 }
 
 #caption {
-  font-size: 2.5em;
+  font-size: 2.3em;
   /* font-family: 'Amatic SC', cursive, sans-serif; */
   font-family: 'Josefin Slab', serif;
+  /* font-family: itc-american-typewriter,serif;
+  font-weight: 500;
+  font-style: normal; */
   text-align: center;
 }
 
