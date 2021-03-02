@@ -10,10 +10,14 @@ body {
   background: black;
 }
 
+.group {
+  filter: drop-shadow(0px 0px 8px rgb(255, 255, 255));
+}
+
 .node {
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
   background-color: white;
   position: absolute;
   cursor: pointer;
@@ -21,7 +25,6 @@ body {
 }
 
 .modal {
-  /* background: rgba(0, 0, 0, 0.6); */
   position: fixed;
   z-index: 5;
   top: 0;
@@ -57,7 +60,7 @@ body {
 }
 
 #caption {
-  font-size: 2em;
+  font-size: 2.5em;
   font-family: 'Amatic SC', cursive, sans-serif;
   text-align: center;
 }

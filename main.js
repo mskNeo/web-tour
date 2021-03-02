@@ -5,7 +5,7 @@ const map = document.querySelector('#map');
 const modalText = document.querySelector('.modal-text');
 const caption = document.querySelector('#caption');
 const svgNS = map.namespaceURI;
-const padding = 20;
+const padding = 30;
 
 let coords = [];
 
@@ -68,13 +68,13 @@ modal.addEventListener('click', (event) => {
   }
   // update map
   if (coords.length >= 2) {
-    const offset = 6;
+    const offset = 15;
     const line = document.createElementNS(svgNS,'line');
     line.setAttribute('x1', coords[coords.length - 2].xPos + offset);
     line.setAttribute('y1', coords[coords.length - 2].yPos + offset);
     line.setAttribute('x2', coords[coords.length - 1].xPos + offset);
     line.setAttribute('y2', coords[coords.length - 1].yPos + offset);
-    line.setAttribute('stroke', 'white');
+    line.setAttribute('stroke', 'rgb(180, 180, 180)');
     line.setAttribute('stroke-width', 3);
     line.setAttribute('class', 'mapPath');
     map.append(line);
