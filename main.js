@@ -54,14 +54,18 @@ nodes.forEach(node => {
       modalText.style.marginTop = `${(window.innerHeight - origImg.height) / 2}px`;
       modalText.style.transformOrigin = `${(window.innerWidth - origImg.width) / 2 + origImg.width / 2}px ${(window.innerHeight - origImg.height) / 2 + origImg.height / 2}px`;
       modalText.style.animation = 'fadeIn 1s ease forwards';
-      modalText.style.animationDelay = '2s';
+      modalText.style.animationDelay = '1s';
     }, 3000);
+
+    // fade out text after 9 seconds to view text and image sufficiently
+    setTimeout(() => {
+      modalText.style.animation = 'fadeOut 1s ease forwards';
+    }, 9000);
 
     // view modal image and exit automatically
     setTimeout(() => {
       modal.classList.remove("modal-open");
       origImg.classList.remove("img-open");
-      modalText.style.animation = 'fadeOut 0.8s ease forwards';
       
       // hide instructions after first click
       if (!visited) {
