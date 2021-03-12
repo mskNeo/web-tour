@@ -50,8 +50,8 @@ nodes.forEach(node => {
       modalText.style.marginLeft = `${(window.innerWidth - origImg.width) / 2}px`;
       modalText.style.marginTop = `${(window.innerHeight - origImg.height) / 2}px`;
       modalText.style.transformOrigin = `${(window.innerWidth - origImg.width) / 2 + origImg.width / 2}px ${(window.innerHeight - origImg.height) / 2 + origImg.height / 2}px`;
-      modalText.style.animation = 'fadeInOut 7s ease';
-      modalText.style.animationDelay = '1s';
+      modalText.style.animation = 'fadeIn 0.7s ease forwards';
+      modalText.style.animationDelay = '0.5s';
     }, 4000);
 
     // once image is loaded, switch to full image
@@ -61,6 +61,7 @@ nodes.forEach(node => {
     setTimeout(() => {
       modal.classList.remove("modal-open");
       origImg.classList.remove("img-open");
+      modalText.style.animation = 'fadeOut 0.7s ease forwards';
       
       // hide instructions after first click
       if (!visited) {
@@ -88,6 +89,6 @@ nodes.forEach(node => {
           path.style.strokeDashoffset = path.getTotalLength();
         })
       }
-    }, 12000);
+    }, 7000);
   });
 });
