@@ -73,6 +73,7 @@ body {
   opacity: 0;
   pointer-events: none;
   transition: all 1.7s cubic-bezier(0.655, 0.03, 0.515, 0.955);
+  cursor: none;
 }
 
 .full-img {
@@ -89,13 +90,8 @@ body {
   z-index: 10;
   background: rgba(0, 0, 0, 0.6);
   color: white;
-  opacity: 0;
-  transition: all 0.5s ease;
-  cursor: none;
-}
-
-#modal-text:hover {
   opacity: 0.9;
+  transition: all 0.5s ease;
 }
 
 #caption {
