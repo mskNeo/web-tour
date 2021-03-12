@@ -43,6 +43,9 @@ nodes.forEach(node => {
     origImg.alt = text;
     caption.innerHTML = text;
 
+    // once image is loaded, switch to full image
+    origImg.onload = () => origImg.src = origImg.dataset.src;
+
     // animate hover text
     setTimeout(() => {
       modalText.style.width = `${origImg.width}px`;
@@ -50,18 +53,15 @@ nodes.forEach(node => {
       modalText.style.marginLeft = `${(window.innerWidth - origImg.width) / 2}px`;
       modalText.style.marginTop = `${(window.innerHeight - origImg.height) / 2}px`;
       modalText.style.transformOrigin = `${(window.innerWidth - origImg.width) / 2 + origImg.width / 2}px ${(window.innerHeight - origImg.height) / 2 + origImg.height / 2}px`;
-      modalText.style.animation = 'fadeIn 0.7s ease forwards';
-      modalText.style.animationDelay = '0.5s';
-    }, 4000);
-
-    // once image is loaded, switch to full image
-    origImg.onload = () => origImg.src = origImg.dataset.src;
+      modalText.style.animation = 'fadeIn 1s ease forwards';
+      modalText.style.animationDelay = '2s';
+    }, 3000);
 
     // view modal image and exit automatically
     setTimeout(() => {
       modal.classList.remove("modal-open");
       origImg.classList.remove("img-open");
-      modalText.style.animation = 'fadeOut 0.7s ease forwards';
+      modalText.style.animation = 'fadeOut 0.8s ease forwards';
       
       // hide instructions after first click
       if (!visited) {
@@ -89,6 +89,6 @@ nodes.forEach(node => {
           path.style.strokeDashoffset = path.getTotalLength();
         })
       }
-    }, 7000);
+    }, 11000);
   });
 });
