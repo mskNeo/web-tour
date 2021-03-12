@@ -1,6 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab&display=swap');
-@import url("https://use.typekit.net/yfi0cme.css");
 
 * {
   margin: 0;
@@ -20,6 +18,19 @@ body {
     opacity: 1;
   }
 }
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+  }
+}
+
 
 .instructions {
   width: 100%;
@@ -90,10 +101,6 @@ body {
 #caption {
   font-size: 3em;
   font-family: 'Amatic SC', cursive, sans-serif;
-  /* font-family: 'Josefin Slab', serif; */
-  /* font-family: itc-american-typewriter,serif;
-  font-weight: 500;
-  font-style: normal; */
   text-align: center;
 }
 

@@ -4,10 +4,12 @@ const origImg = document.querySelector('.full-img');
 const map = document.querySelector('#map');
 const modalText = document.querySelector('#modal-text');
 const caption = document.querySelector('#caption');
+const instructions = document.querySelector('.instructions');
 const svgNS = map.namespaceURI;
 const padding = 50;
 
 let coords = [];
+let visited = false;
 
 nodes.forEach(node => {
   // generate random x and y coordinates for nodes upon load
@@ -64,6 +66,11 @@ modal.addEventListener('click', (event) => {
       origImg.classList.remove("img-open");
       modalText.classList.remove('show');
       modalText.classList.add('hide');
+  }
+  // hide instructions after first click
+  if (!visited) {
+    visited = true;
+    instructions.style.display = 'none';
   }
   // update map
   if (coords.length >= 2) {
