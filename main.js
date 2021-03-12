@@ -50,9 +50,9 @@ nodes.forEach(node => {
       modalText.style.marginLeft = `${(window.innerWidth - origImg.width) / 2}px`;
       modalText.style.marginTop = `${(window.innerHeight - origImg.height) / 2}px`;
       modalText.style.transformOrigin = `${(window.innerWidth - origImg.width) / 2 + origImg.width / 2}px ${(window.innerHeight - origImg.height) / 2 + origImg.height / 2}px`;
-      modalText.classList.remove('hide');
-      modalText.classList.add('show');
-    }, 2000);
+      modalText.style.animation = 'fadeInOut 7s ease';
+      modalText.style.animationDelay = '1s';
+    }, 4000);
 
     // once image is loaded, switch to full image
     origImg.onload = () => origImg.src = origImg.dataset.src;
@@ -61,8 +61,6 @@ nodes.forEach(node => {
     setTimeout(() => {
       modal.classList.remove("modal-open");
       origImg.classList.remove("img-open");
-      modalText.classList.remove('show');
-      modalText.classList.add('hide');
       
       // hide instructions after first click
       if (!visited) {
@@ -90,6 +88,6 @@ nodes.forEach(node => {
           path.style.strokeDashoffset = path.getTotalLength();
         })
       }
-    }, 7000);
+    }, 12000);
   });
 });

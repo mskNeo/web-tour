@@ -23,10 +23,13 @@ body {
   0% {
     opacity: 0;
   }
-  30% {
+  20% {
     opacity: 1;
   }
   80% {
+    opacity: 1;
+  }
+  100% {
     opacity: 0;
   }
 }
@@ -90,20 +93,24 @@ body {
   z-index: 10;
   background: rgba(0, 0, 0, 0.6);
   color: white;
-  opacity: 0.9;
+  opacity: 0;
   transition: all 0.5s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #caption {
   font-size: 3em;
   font-family: 'Amatic SC', cursive, sans-serif;
   text-align: center;
+  transition: all 0.5s ease;
 }
 
 .modal-open {
   opacity: 1;
   pointer-events: all;
-  cursor: pointer;
+  cursor: none;
 }
 
 .img-open {
@@ -137,14 +144,4 @@ body {
     width: auto;
     height: 80%;
   }
-}
-
-.hide {
-  display: none;
-}
-
-.show {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
