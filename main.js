@@ -27,6 +27,7 @@ nodes.forEach(node => {
     origImg.classList.add("img-open");
 
     // add xPos and yPos of node to coords
+    
     coords.push({xPos, yPos});
 
     // make sure clicks on the same node repeatedly doesn't update the coords array
@@ -55,12 +56,12 @@ nodes.forEach(node => {
       modalText.style.transformOrigin = `${(window.innerWidth - origImg.width) / 2 + origImg.width / 2}px ${(window.innerHeight - origImg.height) / 2 + origImg.height / 2}px`;
       modalText.style.animation = 'fadeIn 1s ease forwards';
       modalText.style.animationDelay = '1s';
-    }, 3000);
+    }, 3500);
 
     // fade out text after 9 seconds to view text and image sufficiently
     setTimeout(() => {
       modalText.style.animation = 'fadeOut 1s ease forwards';
-    }, 9000);
+    }, 9500);
 
     // view modal image and exit automatically
     setTimeout(() => {
@@ -93,6 +94,6 @@ nodes.forEach(node => {
           path.style.strokeDashoffset = path.getTotalLength();
         })
       }
-    }, 11000);
+    }, 11500);
   });
 });
