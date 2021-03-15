@@ -87,7 +87,7 @@ nodes.forEach(node => {
         line.setAttribute('x1', coords[coords.length - 2].xPos + offset);
         line.setAttribute('y1', coords[coords.length - 2].yPos + offset / 2);
         line.setAttribute('x2', coords[coords.length - 1].xPos + offset);
-        line.setAttribute('y2', coords[coords.length - 1].yPos) + offset / 2;
+        line.setAttribute('y2', coords[coords.length - 1].yPos + offset / 2);
         line.setAttribute('stroke', 'whitesmoke');
         line.setAttribute('stroke-width', 2);
         line.setAttribute('class', 'mapPath');
