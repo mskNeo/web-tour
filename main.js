@@ -13,8 +13,8 @@ let visited = false;
 
 nodes.forEach(node => {
   // generate random x and y coordinates for nodes upon load
-  let xPos = Math.random() * (window.innerWidth - padding);
-  let yPos = Math.random() * (window.innerHeight - padding);
+  let xPos = Math.random() * (window.innerWidth * 2 - padding);
+  let yPos = Math.random() * (window.innerHeight * 2 - padding);
   if (yPos < 50) {
     yPos = 70;
   }
