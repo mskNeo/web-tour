@@ -15,6 +15,10 @@ function calcDist(x1, x2, y1, y2) {
   return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
 }
 
+document.addEventListener('mousedown', () => {
+  
+})
+
 nodes.forEach(node => {
   // generate random x and y coordinates for nodes upon load
   let xPos = Math.random() * (window.innerWidth * 2 - padding);
