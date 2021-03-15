@@ -8,6 +8,11 @@
 
 body {
   background: black;
+  cursor: grab;
+}
+
+body:active {
+  cursor: grabbing;
 }
 
 @keyframes fadeIn {
@@ -111,8 +116,9 @@ body {
 }
 
 #map {
-  width: 100vw;
-  height: 99.6vh;
+  padding-top: 1vh;
+  width: 200vw;
+  height: 200vh;
 }
 
 @keyframes dash {

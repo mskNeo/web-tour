@@ -11,10 +11,14 @@ const padding = 50;
 let coords = [];
 let visited = false;
 
+function calcDist(x1, x2, y1, y2) {
+  return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
+}
+
 nodes.forEach(node => {
   // generate random x and y coordinates for nodes upon load
-  let xPos = Math.random() * (window.innerWidth - padding);
-  let yPos = Math.random() * (window.innerHeight - padding);
+  let xPos = Math.random() * (window.innerWidth * 2 - padding);
+  let yPos = Math.random() * (window.innerHeight * 2 - padding);
   if (yPos < 50) {
     yPos = 70;
   }
@@ -27,7 +31,13 @@ nodes.forEach(node => {
     origImg.classList.add("img-open");
 
     // add xPos and yPos of node to coords
-    
+    if (coords.length > 1) {
+      coords.forEach(coord => {
+        if (calcDist(xPos, yPos, coord.xPos, coord.yPos) <= 50) {
+          yPos = yPos - 50;
+        }
+      });
+    } 
     coords.push({xPos, yPos});
 
     // make sure clicks on the same node repeatedly doesn't update the coords array
