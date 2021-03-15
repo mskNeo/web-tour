@@ -9,6 +9,7 @@
 body {
   background: black;
   cursor: grab;
+  pointer-events: all;
 }
 
 body:active {
