@@ -116,7 +116,7 @@ body:active {
 }
 
 #map {
-  padding-top: .5vh;
+  padding-top: 1vh;
   width: 200vw;
   height: 200vh;
 }
