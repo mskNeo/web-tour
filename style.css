@@ -82,7 +82,7 @@ body:active {
 .instructions {
   color: white;
   position: fixed;
-  top: 45%;
+  top: 42%;
   left: 40%;
   text-align: center;
   padding-top: 10px;
@@ -121,13 +121,13 @@ body:active {
 
 .left {
   left: 1%;
-  top: 40%;
+  top: 42%;
   animation: leftBounce 2s ease infinite;
 }
 
 .right {
   right: 1%;
-  top: 40%;
+  top: 42%;
   animation: rightBounce 2s ease infinite;
 }
 
