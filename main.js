@@ -5,6 +5,10 @@ const map = document.querySelector('#map');
 const modalText = document.querySelector('#modal-text');
 const caption = document.querySelector('#caption');
 const instructions = document.querySelector('.instructions');
+const up = document.querySelector('.up');
+const down = document.querySelector('.down');
+const left = document.querySelector('.left');
+const right = document.querySelector('.right');
 const svgNS = map.namespaceURI;
 const padding = 50;
 
@@ -15,9 +19,32 @@ function calcDist(x1, x2, y1, y2) {
   return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
 }
 
-document.addEventListener('mousedown', () => {
-
-})
+document.addEventListener('scroll', (e) => {
+  if (window.scrollX == 0) {
+    left.style.opacity = '0';
+  }
+  if (window.scrollX > 0) {
+    left.style.opacity = '1';
+  }
+  if (window.scrollX < document.body.scrollWidth / 2) {
+    right.style.opacity = '1';
+  }
+  if (window.scrollX >= document.body.scrollWidth / 2) {
+    right.style.opacity = '0';
+  }
+  if (window.scrollY > 0) {
+    up.style.opacity = '1';
+  }
+  if (window.scrollY == 0) {
+    up.style.opacity = '0';
+  }
+  if (window.scrollY < document.body.scrollHeight / 1.5) {
+    down.style.opacity = '1';
+  }
+  if (window.scrollY >= document.body.scrollHeight / 1.5) {
+    down.style.opacity = '0';
+  }
+});
 
 nodes.forEach(node => {
   // generate random x and y coordinates for nodes upon load

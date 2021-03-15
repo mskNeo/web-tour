@@ -16,6 +16,51 @@ body:active {
   cursor: grabbing;
 }
 
+@keyframes upBounce {
+  0% {
+    transform: translateY(0px) rotate(-90deg);
+  }
+  50% {
+    transform: translateY(10px) rotate(-90deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(-90deg);
+  }
+}
+@keyframes downBounce {
+  0% {
+    transform: translateY(0px) rotate(90deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(90deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(90deg);
+  }
+}
+@keyframes leftBounce {
+  0% {
+    transform: translateX(0px) rotate(180deg);
+  }
+  50% {
+    transform: translateX(10px) rotate(180deg);
+  }
+  100% {
+    transform: translateX(0px) rotate(180deg);
+  }
+}
+@keyframes rightBounce {
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -35,9 +80,10 @@ body:active {
 }
 
 .instructions {
-  width: 100%;
   color: white;
   position: fixed;
+  top: 45%;
+  left: 40%;
   text-align: center;
   padding-top: 10px;
   font-family: 'Amatic SC', cursive, sans-serif;
@@ -45,6 +91,44 @@ body:active {
   opacity: 0;
   animation: fadeIn 1.5s ease forwards;
   animation-delay: 3s;
+}
+
+.arrows {
+  height: 100vh;
+  width: 100vw;
+}
+
+.up, .down, .left, .right {
+  position: fixed;
+  color: white;
+  font-family: 'Amatic SC', cursive, sans-serif;
+  font-size: 5em;
+  transform-origin: center;
+  transition: 0.7s opacity ease;
+}
+
+.up {  
+  left: 49%;
+  top: 0;
+  animation: upBounce 2s ease infinite;
+}
+
+.down {
+  bottom: 0;
+  left: 49%;
+  animation: downBounce 2s ease infinite;
+}
+
+.left {
+  left: 1%;
+  top: 40%;
+  animation: leftBounce 2s ease infinite;
+}
+
+.right {
+  right: 1%;
+  top: 40%;
+  animation: rightBounce 2s ease infinite;
 }
 
 .group {
