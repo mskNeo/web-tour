@@ -16,7 +16,7 @@ function calcDist(x1, x2, y1, y2) {
 }
 
 document.addEventListener('mousedown', () => {
-  
+
 })
 
 nodes.forEach(node => {
@@ -35,13 +35,6 @@ nodes.forEach(node => {
     origImg.classList.add("img-open");
 
     // add xPos and yPos of node to coords
-    if (coords.length > 1) {
-      coords.forEach(coord => {
-        if (calcDist(xPos, yPos, coord.xPos, coord.yPos) <= 50) {
-          yPos = yPos - 50;
-        }
-      });
-    } 
     coords.push({xPos, yPos});
 
     // make sure clicks on the same node repeatedly doesn't update the coords array
