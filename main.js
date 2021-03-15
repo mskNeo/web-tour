@@ -85,9 +85,9 @@ nodes.forEach(node => {
         const offset = 15;
         const line = document.createElementNS(svgNS,'line');
         line.setAttribute('x1', coords[coords.length - 2].xPos + offset);
-        line.setAttribute('y1', coords[coords.length - 2].yPos + offset);
+        line.setAttribute('y1', coords[coords.length - 2].yPos);
         line.setAttribute('x2', coords[coords.length - 1].xPos + offset);
-        line.setAttribute('y2', coords[coords.length - 1].yPos + offset);
+        line.setAttribute('y2', coords[coords.length - 1].yPos);
         line.setAttribute('stroke', 'whitesmoke');
         line.setAttribute('stroke-width', 2);
         line.setAttribute('class', 'mapPath');
