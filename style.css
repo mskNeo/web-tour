@@ -92,10 +92,10 @@ body:active {
   left: 0;
   text-align: center;
   font-family: 'Amatic SC', cursive, sans-serif;
-  font-size: 1.8em;
+  font-size: 2em;
   opacity: 0;
   animation: fadeIn 1.5s ease forwards;
-  animation-delay: 3s;
+  animation-delay: 2s;
 }
 
 .arrows {

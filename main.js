@@ -19,6 +19,19 @@ function calcDist(x1, x2, y1, y2) {
   return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
 }
 
+window.addEventListener('load', event => {
+  window.scrollTo(0, 0);
+  left.style.opacity = '0';
+  right.style.opacity = '0';
+  up.style.opacity = '0';
+  down.style.opacity = '0';
+
+  setTimeout(() => {
+    right.style.opacity = '1';
+    down.style.opacity = '1';
+  }, 4000);
+});
+
 document.addEventListener('scroll', (e) => {
   if (window.scrollX == 0) {
     left.style.opacity = '0';
