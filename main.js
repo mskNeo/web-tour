@@ -25,7 +25,7 @@ window.addEventListener('load', event => {
   setTimeout(() => {
     right.style.opacity = '1';
     down.style.opacity = '1';
-  }, 4000);
+  }, 6000);
 });
 
 document.addEventListener('scroll', (e) => {

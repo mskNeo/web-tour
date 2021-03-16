@@ -98,7 +98,7 @@ body:active {
   opacity: 0;
   animation: fadeIn 1.5s ease forwards;
   transition: 0.3s all ease;
-  animation-delay: 3s;
+  animation-delay: 4s;
 }
 
 .up, .down, .left, .right {
