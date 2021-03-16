@@ -102,7 +102,7 @@ nodes.forEach(node => {
     // fade out text after 9 seconds to view text and image sufficiently
     setTimeout(() => {
       modalText.style.animation = 'fadeOut 1s ease forwards';
-    }, 9500);
+    }, 10500);
 
     // view modal image and exit automatically
     setTimeout(() => {
@@ -135,6 +135,6 @@ nodes.forEach(node => {
           path.style.strokeDashoffset = path.getTotalLength();
         })
       }
-    }, 11500);
+    }, 13000);
   });
 });
