@@ -17,6 +17,10 @@ let visited = false;
 
 window.addEventListener('load', event => {
   window.scrollTo(0, 0);
+  left.style.opacity = '0';
+  right.style.opacity = '0';
+  up.style.opacity = '0';
+  down.style.opacity = '0';
 
   setTimeout(() => {
     right.style.opacity = '1';
@@ -53,11 +57,9 @@ document.addEventListener('scroll', (e) => {
 
 nodes.forEach(node => {
   // generate random x and y coordinates for nodes upon load
-  let xPos = Math.random() * (window.innerWidth * 2 - padding);
-  let yPos = Math.random() * (window.innerHeight * 2 - padding);
-  if (yPos < 50) {
-    yPos = 70;
-  }
+  let xPos = Math.random() * (document.body.scrollWidth - padding);
+  let yPos = Math.random() * (document.body.scrollHeight - padding);
+  
   node.style.top = `${yPos}px`;
   node.style.left = `${xPos}px`;
 
