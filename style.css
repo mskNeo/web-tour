@@ -110,6 +110,7 @@ body:active {
   font-size: 5em;
   transform-origin: center;
   transition: 0.7s opacity ease;
+  opacity: 0;
 }
 
 .up {  
