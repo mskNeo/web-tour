@@ -82,10 +82,15 @@ body:active {
 .instructions {
   color: white;
   position: fixed;
-  top: 42%;
-  left: 40%;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
   text-align: center;
-  padding-top: 10px;
   font-family: 'Amatic SC', cursive, sans-serif;
   font-size: 1.8em;
   opacity: 0;
@@ -121,13 +126,13 @@ body:active {
 
 .left {
   left: 1%;
-  top: 42%;
+  top: 45%;
   animation: leftBounce 2s ease infinite;
 }
 
 .right {
   right: 1%;
-  top: 42%;
+  top: 45%;
   animation: rightBounce 2s ease infinite;
 }
 
