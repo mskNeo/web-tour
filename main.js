@@ -17,10 +17,6 @@ let visited = false;
 
 window.addEventListener('load', event => {
   window.scrollTo(0, 0);
-  left.style.opacity = '0';
-  right.style.opacity = '0';
-  up.style.opacity = '0';
-  down.style.opacity = '0';
 
   setTimeout(() => {
     right.style.opacity = '1';
