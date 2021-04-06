@@ -93,7 +93,8 @@ body {
 }
 
 #modal-text:hover {
-  animation: fadeIn 1s ease forwards;
+  opacity: 1;
+  cursor: none;
 }
 
 #caption {

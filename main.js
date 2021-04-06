@@ -71,12 +71,12 @@ nodes.forEach(node => {
     }
     // update map
     if (coords.length >= 2) {
-      const offset = 7;
+      const offset = 15;
       const line = document.createElementNS(svgNS,'line');
       line.setAttribute('x1', coords[coords.length - 2].xPos + offset);
-      line.setAttribute('y1', coords[coords.length - 2].yPos + offset / 2);
+      line.setAttribute('y1', coords[coords.length - 2].yPos + offset);
       line.setAttribute('x2', coords[coords.length - 1].xPos + offset);
-      line.setAttribute('y2', coords[coords.length - 1].yPos + offset / 2);
+      line.setAttribute('y2', coords[coords.length - 1].yPos + offset);
       line.setAttribute('stroke', 'whitesmoke');
       line.setAttribute('stroke-width', 2);
       line.setAttribute('class', 'mapPath');
