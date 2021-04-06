@@ -163,7 +163,6 @@ body:active {
   opacity: 0;
   pointer-events: none;
   transition: all 1.7s cubic-bezier(0.655, 0.03, 0.515, 0.955);
-  cursor: none;
 }
 
 .full-img {
@@ -187,6 +186,11 @@ body:active {
   align-items: center;
 }
 
+#modal-text:hover {
+  opacity: 1;
+  cursor: none;
+}
+
 #caption {
   font-size: 3em;
   font-family: 'Amatic SC', cursive, sans-serif;
@@ -197,7 +201,6 @@ body:active {
 .modal-open {
   opacity: 1;
   pointer-events: all;
-  cursor: none;
 }
 
 .img-open {

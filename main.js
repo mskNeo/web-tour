@@ -47,10 +47,10 @@ document.addEventListener('scroll', (e) => {
   if (window.scrollY == 0) {
     up.style.opacity = '0';
   }
-  if (window.scrollY < document.body.scrollHeight / 1.5) {
+  if (window.scrollY < document.body.scrollHeight / 2) {
     down.style.opacity = '1';
   }
-  if (window.scrollY >= document.body.scrollHeight / 1.5) {
+  if (window.scrollY >= document.body.scrollHeight / 2) {
     down.style.opacity = '0';
   }
 });
@@ -95,46 +95,43 @@ nodes.forEach(node => {
       modalText.style.marginLeft = `${(window.innerWidth - origImg.width) / 2}px`;
       modalText.style.marginTop = `${(window.innerHeight - origImg.height) / 2}px`;
       modalText.style.transformOrigin = `${(window.innerWidth - origImg.width) / 2 + origImg.width / 2}px ${(window.innerHeight - origImg.height) / 2 + origImg.height / 2}px`;
-      modalText.style.animation = 'fadeIn 1s ease forwards';
-      modalText.style.animationDelay = '1s';
     }, 3500);
 
-    // fade out text after 9 seconds to view text and image sufficiently
-    setTimeout(() => {
-      modalText.style.animation = 'fadeOut 1s ease forwards';
-    }, 10500);
-
-    // view modal image and exit automatically
-    setTimeout(() => {
-      modal.classList.remove("modal-open");
-      origImg.classList.remove("img-open");
-      
-      // hide instructions after first click
-      if (!visited) {
-        visited = true;
-        instructions.style.display = 'none';
-      }
-      // update map
-      if (coords.length >= 2) {
-        const offset = 15;
-        const line = document.createElementNS(svgNS,'line');
-        line.setAttribute('x1', coords[coords.length - 2].xPos + offset);
-        line.setAttribute('y1', coords[coords.length - 2].yPos + offset / 2);
-        line.setAttribute('x2', coords[coords.length - 1].xPos + offset);
-        line.setAttribute('y2', coords[coords.length - 1].yPos + offset / 2);
-        line.setAttribute('stroke', 'whitesmoke');
-        line.setAttribute('stroke-width', 2);
-        line.setAttribute('class', 'mapPath');
-        map.append(line);
-
-        // set up paths in map to be animated
-        const paths = document.querySelectorAll('.mapPath');
-
-        paths.forEach(path => {
-          path.style.strokeDasharray = path.getTotalLength();
-          path.style.strokeDashoffset = path.getTotalLength();
-        })
-      }
-    }, 13000);
   });
 });
+
+// fade out text after 9 seconds to view text and image sufficiently
+modal.addEventListener('click', (event) => {
+  if (event.target.classList.contains('modal')) {
+    modal.classList.remove("modal-open");
+    origImg.classList.remove("img-open");
+  }
+  
+  // hide instructions after first click
+  if (!visited) {
+    visited = true;
+    instructions.style.display = 'none';
+  }
+  // update map
+  if (coords.length >= 2) {
+    const offset = 15;
+    const line = document.createElementNS(svgNS,'line');
+    line.setAttribute('x1', coords[coords.length - 2].xPos + offset);
+    line.setAttribute('y1', coords[coords.length - 2].yPos + offset / 2);
+    line.setAttribute('x2', coords[coords.length - 1].xPos + offset);
+    line.setAttribute('y2', coords[coords.length - 1].yPos + offset / 2);
+    line.setAttribute('stroke', 'whitesmoke');
+    line.setAttribute('stroke-width', 2);
+    line.setAttribute('class', 'mapPath');
+    map.append(line);
+
+    // set up paths in map to be animated
+    const paths = document.querySelectorAll('.mapPath');
+
+    paths.forEach(path => {
+      path.style.strokeDasharray = path.getTotalLength();
+      path.style.strokeDashoffset = path.getTotalLength();
+    })
+  }
+});
+      
