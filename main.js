@@ -96,9 +96,8 @@ nodes.forEach(node => {
       modalText.style.marginTop = `${(window.innerHeight - origImg.height) / 2}px`;
       modalText.style.transformOrigin = `${(window.innerWidth - origImg.width) / 2 + origImg.width / 2}px ${(window.innerHeight - origImg.height) / 2 + origImg.height / 2}px`;
     }, 3500);
-
   });
-});
+
 
 // fade out text after 9 seconds to view text and image sufficiently
 modal.addEventListener('click', (event) => {
@@ -106,7 +105,7 @@ modal.addEventListener('click', (event) => {
     modal.classList.remove("modal-open");
     origImg.classList.remove("img-open");
   }
-  
+
   // hide instructions after first click
   if (!visited) {
     visited = true;
@@ -117,9 +116,9 @@ modal.addEventListener('click', (event) => {
     const offset = 15;
     const line = document.createElementNS(svgNS,'line');
     line.setAttribute('x1', coords[coords.length - 2].xPos + offset);
-    line.setAttribute('y1', coords[coords.length - 2].yPos + offset / 2);
+    line.setAttribute('y1', coords[coords.length - 2].yPos + offset);
     line.setAttribute('x2', coords[coords.length - 1].xPos + offset);
-    line.setAttribute('y2', coords[coords.length - 1].yPos + offset / 2);
+    line.setAttribute('y2', coords[coords.length - 1].yPos + offset);
     line.setAttribute('stroke', 'whitesmoke');
     line.setAttribute('stroke-width', 2);
     line.setAttribute('class', 'mapPath');
