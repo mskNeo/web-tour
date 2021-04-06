@@ -69,7 +69,6 @@ body {
   opacity: 0;
   pointer-events: none;
   transition: all 1.7s cubic-bezier(0.655, 0.03, 0.515, 0.955);
-  cursor: none;
 }
 
 .full-img {
@@ -93,6 +92,10 @@ body {
   align-items: center;
 }
 
+#modal-text:hover {
+  animation: fadeIn 1s ease forwards;
+}
+
 #caption {
   font-size: 3em;
   font-family: 'Amatic SC', cursive, sans-serif;
@@ -103,11 +106,11 @@ body {
 .modal-open {
   opacity: 1;
   pointer-events: all;
-  cursor: none;
 }
 
 .img-open {
   transform: translate(-50%, -50%) scale(1);
+  cursor: none;
 }
 
 #map {
