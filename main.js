@@ -5,61 +5,19 @@ const map = document.querySelector('#map');
 const modalText = document.querySelector('#modal-text');
 const caption = document.querySelector('#caption');
 const instructions = document.querySelector('.instructions');
-const up = document.querySelector('.up');
-const down = document.querySelector('.down');
-const left = document.querySelector('.left');
-const right = document.querySelector('.right');
 const svgNS = map.namespaceURI;
 const padding = 50;
 
 let coords = [];
 let visited = false;
 
-window.addEventListener('load', event => {
-  window.scrollTo(0, 0);
-  left.style.opacity = '0';
-  right.style.opacity = '0';
-  up.style.opacity = '0';
-  down.style.opacity = '0';
-
-  setTimeout(() => {
-    right.style.opacity = '1';
-    down.style.opacity = '1';
-  }, 6000);
-});
-
-document.addEventListener('scroll', (e) => {
-  if (window.scrollX == 0) {
-    left.style.opacity = '0';
-  }
-  if (window.scrollX > 0) {
-    left.style.opacity = '1';
-  }
-  if (window.scrollX < document.body.scrollWidth / 2) {
-    right.style.opacity = '1';
-  }
-  if (window.scrollX >= document.body.scrollWidth / 2) {
-    right.style.opacity = '0';
-  }
-  if (window.scrollY > 0) {
-    up.style.opacity = '1';
-  }
-  if (window.scrollY == 0) {
-    up.style.opacity = '0';
-  }
-  if (window.scrollY < document.body.scrollHeight / 2) {
-    down.style.opacity = '1';
-  }
-  if (window.scrollY >= document.body.scrollHeight / 2) {
-    down.style.opacity = '0';
-  }
-});
-
 nodes.forEach(node => {
   // generate random x and y coordinates for nodes upon load
-  let xPos = Math.random() * (document.body.scrollWidth - padding);
-  let yPos = Math.random() * (document.body.scrollHeight - padding);
-  
+  let xPos = Math.random() * (window.innerWidth - padding);
+  let yPos = Math.random() * (window.innerHeight - padding);
+  if (yPos < 50) {
+    yPos = 70;
+  }
   node.style.top = `${yPos}px`;
   node.style.left = `${xPos}px`;
 
@@ -69,6 +27,7 @@ nodes.forEach(node => {
     origImg.classList.add("img-open");
 
     // add xPos and yPos of node to coords
+    
     coords.push({xPos, yPos});
 
     // make sure clicks on the same node repeatedly doesn't update the coords array
@@ -98,39 +57,38 @@ nodes.forEach(node => {
     }, 3500);
   });
 
+  // fade out text after 9 seconds to view text and image sufficiently
+  modal.addEventListener('click', (event) => {
+    if (event.target.classList.contains('modal')) {
+      modal.classList.remove("modal-open");
+      origImg.classList.remove("img-open");
+    }
+    
+    // hide instructions after first click
+    if (!visited) {
+      visited = true;
+      instructions.style.display = 'none';
+    }
+    // update map
+    if (coords.length >= 2) {
+      const offset = 15;
+      const line = document.createElementNS(svgNS,'line');
+      line.setAttribute('x1', coords[coords.length - 2].xPos + offset);
+      line.setAttribute('y1', coords[coords.length - 2].yPos + offset);
+      line.setAttribute('x2', coords[coords.length - 1].xPos + offset);
+      line.setAttribute('y2', coords[coords.length - 1].yPos + offset);
+      line.setAttribute('stroke', 'whitesmoke');
+      line.setAttribute('stroke-width', 2);
+      line.setAttribute('class', 'mapPath');
+      map.append(line);
 
-// fade out text after 9 seconds to view text and image sufficiently
-modal.addEventListener('click', (event) => {
-  if (event.target.classList.contains('modal')) {
-    modal.classList.remove("modal-open");
-    origImg.classList.remove("img-open");
-  }
+      // set up paths in map to be animated
+      const paths = document.querySelectorAll('.mapPath');
 
-  // hide instructions after first click
-  if (!visited) {
-    visited = true;
-    instructions.style.display = 'none';
-  }
-  // update map
-  if (coords.length >= 2) {
-    const offset = 15;
-    const line = document.createElementNS(svgNS,'line');
-    line.setAttribute('x1', coords[coords.length - 2].xPos + offset);
-    line.setAttribute('y1', coords[coords.length - 2].yPos + offset);
-    line.setAttribute('x2', coords[coords.length - 1].xPos + offset);
-    line.setAttribute('y2', coords[coords.length - 1].yPos + offset);
-    line.setAttribute('stroke', 'whitesmoke');
-    line.setAttribute('stroke-width', 2);
-    line.setAttribute('class', 'mapPath');
-    map.append(line);
-
-    // set up paths in map to be animated
-    const paths = document.querySelectorAll('.mapPath');
-
-    paths.forEach(path => {
-      path.style.strokeDasharray = path.getTotalLength();
-      path.style.strokeDashoffset = path.getTotalLength();
-    })
-  }
+      paths.forEach(path => {
+        path.style.strokeDasharray = path.getTotalLength();
+        path.style.strokeDashoffset = path.getTotalLength();
+      })
+    }
+  });
 });
-      
