@@ -11,6 +11,105 @@ const padding = 50;
 let coords = [];
 let visited = false;
 
+const sites = [
+  "https://longdogechallenge.com/",
+  "http://heeeeeeeey.com/",
+  "http://corndog.io/",
+  "https://mondrianandme.com/",
+  "https://puginarug.com",
+  "https://alwaysjudgeabookbyitscover.com",
+  "https://thatsthefinger.com/",
+  "https://cant-not-tweet-this.com/",
+  "https://weirdorconfusing.com/",
+  "http://eelslap.com/",
+  "http://www.staggeringbeauty.com/",
+  "http://burymewithmymoney.com/",
+  "https://smashthewalls.com/",
+  "https://jacksonpollock.org/",
+  "http://endless.horse/",
+  "https://www.trypap.com/",
+  "http://www.republiquedesmangues.fr/",
+  "http://www.movenowthinklater.com/",
+  "http://www.partridgegetslucky.com/",
+  "http://www.rrrgggbbb.com/",
+  "http://beesbeesbees.com/",
+  "http://www.koalastothemax.com/",
+  "http://www.everydayim.com/",
+  "http://randomcolour.com/",
+  "http://cat-bounce.com/",
+  "http://chrismckenzie.com/",
+  "https://thezen.zone/",
+  "http://hasthelargehadroncolliderdestroyedtheworldyet.com/",
+  "http://ninjaflex.com/",
+  "http://ihasabucket.com/",
+  "http://corndogoncorndog.com/",
+  "http://www.hackertyper.com/",
+  "https://pointerpointer.com",
+  "http://imaninja.com/",
+  "http://drawing.garden/",
+  "http://www.ismycomputeron.com/",
+  "http://www.nullingthevoid.com/",
+  "http://www.muchbetterthanthis.com/",
+  "http://www.yesnoif.com/",
+  "http://lacquerlacquer.com",
+  "http://potatoortomato.com/",
+  "http://iamawesome.com/",
+  "https://strobe.cool/",
+  "http://www.pleaselike.com/",
+  "http://crouton.net/",
+  "http://corgiorgy.com/",
+  "http://www.wutdafuk.com/",
+  "http://unicodesnowmanforyou.com/",
+  "http://chillestmonkey.com/",
+  "http://scroll-o-meter.club/",
+  "http://www.crossdivisions.com/",
+  "http://tencents.info/",
+  "https://boringboringboring.com/",
+  "http://www.patience-is-a-virtue.org/",
+  "http://pixelsfighting.com/",
+  "http://isitwhite.com/",
+  "https://existentialcrisis.com/",
+  "http://onemillionlols.com/",
+  "http://www.omfgdogs.com/",
+  "http://oct82.com/",
+  "http://chihuahuaspin.com/",
+  "http://www.blankwindows.com/",
+  "http://dogs.are.the.most.moe/",
+  "http://tunnelsnakes.com/",
+  "http://www.trashloop.com/",
+  "http://www.ascii-middle-finger.com/",
+  "http://spaceis.cool/",
+  "http://www.donothingfor2minutes.com/",
+  "http://buildshruggie.com/",
+  "http://buzzybuzz.biz/",
+  "http://yeahlemons.com/",
+  "http://wowenwilsonquiz.com",
+  "https://thepigeon.org/",
+  "http://notdayoftheweek.com/",
+  "http://www.amialright.com/",
+  "http://nooooooooooooooo.com/",
+  "https://greatbignothing.com/",
+  "https://zoomquilt.org/",
+  "https://dadlaughbutton.com/",
+  "https://www.bouncingdvdlogo.com/",
+  "https://remoji.com/",
+  "http://papertoilet.com/",
+];
+
+const selectWebsite = () => {
+  const range = sites.length;
+  const index = Math.floor(Math.random() * range);
+
+  const site = sites[index];
+  sites.splice(index, 1);
+
+  return site;
+}
+
+function openSite(url) {
+  window.open(url);
+}
+
 nodes.forEach(node => {
   // generate random x and y coordinates for nodes upon load
   let xPos = Math.random() * (window.innerWidth - padding);
@@ -23,11 +122,9 @@ nodes.forEach(node => {
 
   // open image on click and add to coords array
   node.addEventListener('click', (event) => {
-    modal.classList.add("modal-open");
-    origImg.classList.add("img-open");
+    openSite(selectWebsite());
 
     // add xPos and yPos of node to coords
-    
     coords.push({xPos, yPos});
 
     // make sure clicks on the same node repeatedly doesn't update the coords array
@@ -35,35 +132,6 @@ nodes.forEach(node => {
       coords.pop();
     }
 
-    const id = event.target.id;
-    let text = event.target.dataset.text;
-    
-    // set image to the minified version
-    origImg.src = `assets/pic${id}-min.jpg`;
-    origImg.dataset.src = `assets/pic${id}.jpg`;
-    origImg.alt = text;
-    caption.innerHTML = text;
-
-    // once image is loaded, switch to full image
-    origImg.onload = () => origImg.src = origImg.dataset.src;
-
-    // animate hover text
-    setTimeout(() => {
-      modalText.style.width = `${origImg.width}px`;
-      modalText.style.height = `${origImg.height}px`;
-      modalText.style.marginLeft = `${(window.innerWidth - origImg.width) / 2}px`;
-      modalText.style.marginTop = `${(window.innerHeight - origImg.height) / 2}px`;
-      modalText.style.transformOrigin = `${(window.innerWidth - origImg.width) / 2 + origImg.width / 2}px ${(window.innerHeight - origImg.height) / 2 + origImg.height / 2}px`;
-    }, 3500);
-  });
-
-  // fade out text after 9 seconds to view text and image sufficiently
-  modal.addEventListener('click', (event) => {
-    if (event.target.classList.contains('modal')) {
-      modal.classList.remove("modal-open");
-      origImg.classList.remove("img-open");
-    }
-    
     // hide instructions after first click
     if (!visited) {
       visited = true;
