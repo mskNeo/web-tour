@@ -2,7 +2,8 @@ const nodes = document.querySelectorAll('.node');
 const modal = document.querySelector('.modal');
 const map = document.querySelector('#map');
 const instructions = document.querySelector('.instructions');
-const frame = document.querySelector("iframe");
+const frame = document.querySelector(".frame");
+const frameWindow = document.querySelector("iframe");
 const svgNS = map.namespaceURI;
 const padding = 50;
 
@@ -89,7 +90,7 @@ var sites = [
   "https://greatbignothing.com/",
   "https://zoomquilt.org/",
   "https://dadlaughbutton.com/",
-  "https://www.bouncingdvdlogo.com/",
+  "https://remarkablemark.org/Bouncing-DVD-Logo/",
   "https://remoji.com/",
   "http://papertoilet.com/",
 ];
@@ -116,7 +117,9 @@ nodes.forEach(node => {
 
   // open image on click and add to coords array
   node.addEventListener('click', (event) => {
-    frame.src = selectWebsite();
+    frameWindow.src = selectWebsite();
+
+    console.log(frameWindow.src);
 
     // hide instructions after first click
     if (!visited) {
@@ -133,11 +136,20 @@ nodes.forEach(node => {
       if ((coords.length > 1) && (JSON.stringify(coords[coords.length - 1]) == JSON.stringify(coords[coords.length - 2]))) {
         coords.pop();
       }
-    }, 1000);
+
+      nodes.forEach(ele => {
+        ele.style.backgroundColor = 'grey';
+      });
+    }, 500);
   });
 
   map.addEventListener('click', () => {
     frame.style.display = 'none';
+    frameWindow.src = "";
+
+    nodes.forEach(ele => {
+      ele.style.backgroundColor = 'whitesmoke';
+    });
 
     // update map
     if (coords.length >= 2) {

@@ -74,13 +74,21 @@ body {
   transition: all 1.7s cubic-bezier(0.655, 0.03, 0.515, 0.955);
 }
 
-iframe {
+.frame {
   position: fixed;
   display: none;
   top: calc((100% - 720px) / 2);
   left: calc((100% - 1440px) / 2);
   z-index: 5;
-  /* pointer-events: none; */
+  background: white;
+  height: 720px;
+  width: 1440px;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  z-index: 7;
 }
 
 #map {
