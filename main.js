@@ -1,17 +1,15 @@
 const nodes = document.querySelectorAll('.node');
 const modal = document.querySelector('.modal');
-const origImg = document.querySelector('.full-img');
 const map = document.querySelector('#map');
-const modalText = document.querySelector('#modal-text');
-const caption = document.querySelector('#caption');
 const instructions = document.querySelector('.instructions');
+const frame = document.querySelector("iframe");
 const svgNS = map.namespaceURI;
 const padding = 50;
 
 let coords = [];
 let visited = false;
 
-const sites = [
+var sites = [
   "https://longdogechallenge.com/",
   "http://heeeeeeeey.com/",
   "http://corndog.io/",
@@ -106,10 +104,6 @@ const selectWebsite = () => {
   return site;
 }
 
-function openSite(url) {
-  window.open(url);
-}
-
 nodes.forEach(node => {
   // generate random x and y coordinates for nodes upon load
   let xPos = Math.random() * (window.innerWidth - padding);
@@ -122,21 +116,29 @@ nodes.forEach(node => {
 
   // open image on click and add to coords array
   node.addEventListener('click', (event) => {
-    openSite(selectWebsite());
-
-    // add xPos and yPos of node to coords
-    coords.push({xPos, yPos});
-
-    // make sure clicks on the same node repeatedly doesn't update the coords array
-    if ((coords.length > 1) && (JSON.stringify(coords[coords.length - 1]) == JSON.stringify(coords[coords.length - 2]))) {
-      coords.pop();
-    }
+    frame.src = selectWebsite();
 
     // hide instructions after first click
     if (!visited) {
       visited = true;
       instructions.style.display = 'none';
     }
+
+    setTimeout(() => {
+      frame.style.display = "block";
+      // add xPos and yPos of node to coords
+      coords.push({xPos, yPos});
+
+      // make sure clicks on the same node repeatedly doesn't update the coords array
+      if ((coords.length > 1) && (JSON.stringify(coords[coords.length - 1]) == JSON.stringify(coords[coords.length - 2]))) {
+        coords.pop();
+      }
+    }, 1000);
+  });
+
+  map.addEventListener('click', () => {
+    frame.style.display = 'none';
+
     // update map
     if (coords.length >= 2) {
       const offset = 15;
@@ -158,5 +160,5 @@ nodes.forEach(node => {
         path.style.strokeDashoffset = path.getTotalLength();
       })
     }
-  });
+  })
 });
