@@ -118,6 +118,7 @@ nodes.forEach(node => {
   // open image on click and add to coords array
   node.addEventListener('click', (event) => {
     frameWindow.src = selectWebsite();
+    frameWindow.contentWindow.location.reload();
 
     // hide instructions after first click
     if (!visited) {
