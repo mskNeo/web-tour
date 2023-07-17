@@ -1,5 +1,7 @@
 // Imports
 const express = require('express')
+import serverless from 'serverless-http';
+
 const app = express()
 const port = 5000
 
@@ -17,3 +19,5 @@ app.get('', (req, res) => {
 
 // Listen on Port 5000
 app.listen(port, () => console.info(`App listening on port ${port}`))
+
+export const handler = serverless(app)
