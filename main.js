@@ -3,7 +3,7 @@ const modal = document.querySelector('.modal');
 const map = document.querySelector('#map');
 const instructions = document.querySelector('.instructions');
 const frame = document.querySelector(".frame");
-const frameWindow = document.querySelector("iframe");
+const frameWindow = document.querySelector(".frame object");
 const svgNS = map.namespaceURI;
 const padding = 50;
 
@@ -117,8 +117,7 @@ nodes.forEach(node => {
 
   // open image on click and add to coords array
   node.addEventListener('click', (event) => {
-    frameWindow.src = selectWebsite();
-    frameWindow.contentWindow.location.reload();
+    frameWindow.setAttribute('data', selectWebsite());
 
     // hide instructions after first click
     if (!visited) {
@@ -144,7 +143,7 @@ nodes.forEach(node => {
 
   map.addEventListener('click', () => {
     frame.style.display = 'none';
-    frameWindow.src = "";
+    frameWindow.setAttribute('data', '');
 
     nodes.forEach(ele => {
       ele.style.backgroundColor = 'whitesmoke';
