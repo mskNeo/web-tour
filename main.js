@@ -117,7 +117,7 @@ nodes.forEach(node => {
 
   // open image on click and add to coords array
   node.addEventListener('click', (event) => {
-    frameWindow.setAttribute('data', selectWebsite());
+    frame.innerHTML = `<object type="text/html" data="${selectWebsite()}"></object>`
 
     // hide instructions after first click
     if (!visited) {
@@ -143,7 +143,7 @@ nodes.forEach(node => {
 
   map.addEventListener('click', () => {
     frame.style.display = 'none';
-    frameWindow.setAttribute('data', '');
+    frame.innerHTML = ''
 
     nodes.forEach(ele => {
       ele.style.backgroundColor = 'whitesmoke';
