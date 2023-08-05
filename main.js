@@ -84,7 +84,6 @@ let sites = [
   "https://wowenwilsonquiz.com",
   "https://thepigeon.org/",
   "https://notdayoftheweek.com/",
-  "https://www.amialright.com/",
   "https://nooooooooooooooo.com/",
   "https://greatbignothing.com/",
   "https://zoomquilt.org/",
