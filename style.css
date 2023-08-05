@@ -8,6 +8,7 @@
 
 body {
   background: black;
+  font-family: 'Amatic SC', cursive, sans-serif;
 }
 
 @keyframes fadeIn {
@@ -34,7 +35,6 @@ body {
   position: fixed;
   text-align: center;
   padding-top: 10px;
-  font-family: 'Amatic SC', cursive, sans-serif;
   font-size: 1.8em;
   opacity: 0;
   animation: fadeIn 1.5s ease forwards;
@@ -110,11 +110,12 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  content: "\274c"; /* use the hex value here... */
-  font-size: 20px; 
+  content: "X"; /* use the hex value here... */
+  font-size: 1.8em;
+  font-weight: bold;
   color: #FFF;
-  line-height: 40px;
   text-align: center;
+  transform: scale(2.5, 1)
 }
 
 #map {
