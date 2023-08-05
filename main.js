@@ -1,9 +1,8 @@
 const nodes = document.querySelectorAll('.node');
-const modal = document.querySelector('.modal');
 const map = document.querySelector('#map');
 const instructions = document.querySelector('.instructions');
 const frame = document.querySelector(".frame");
-const frameWindow = document.querySelector(".frame object");
+const close = document.querySelector("#close")
 const svgNS = map.namespaceURI;
 const padding = 50;
 
@@ -117,7 +116,12 @@ nodes.forEach(node => {
 
   // open image on click and add to coords array
   node.addEventListener('click', (event) => {
-    frame.innerHTML = `<object type="text/html" data="${selectWebsite()}"></object>`
+    const object = document.createElement('object');
+    object.setAttribute('type', 'text/html')
+    object.setAttribute('data', selectWebsite())  
+    object.setAttribute('id', 'website');
+    
+    frame.appendChild(object)
 
     // hide instructions after first click
     if (!visited) {
@@ -125,8 +129,11 @@ nodes.forEach(node => {
       instructions.style.display = 'none';
     }
 
+    // slight delay in interaction
     setTimeout(() => {
+      // display frame
       frame.style.display = "block";
+
       // add xPos and yPos of node to coords
       coords.push({xPos, yPos});
 
@@ -141,34 +148,34 @@ nodes.forEach(node => {
     }, 500);
   });
 
-  map.addEventListener('click', () => {
-    frame.style.display = 'none';
-    frame.innerHTML = ''
+    close.addEventListener('click', () => {
+      frame.style.display = 'none';
+      frame.removeChild(document.getElementById('website'));
 
-    nodes.forEach(ele => {
-      ele.style.backgroundColor = 'whitesmoke';
-    });
+      nodes.forEach(ele => {
+        ele.style.backgroundColor = 'whitesmoke';
+      });
 
-    // update map
-    if (coords.length >= 2) {
-      const offset = 15;
-      const line = document.createElementNS(svgNS,'line');
-      line.setAttribute('x1', coords[coords.length - 2].xPos + offset);
-      line.setAttribute('y1', coords[coords.length - 2].yPos + offset);
-      line.setAttribute('x2', coords[coords.length - 1].xPos + offset);
-      line.setAttribute('y2', coords[coords.length - 1].yPos + offset);
-      line.setAttribute('stroke', 'whitesmoke');
-      line.setAttribute('stroke-width', 2);
-      line.setAttribute('class', 'mapPath');
-      map.append(line);
+      // update map
+      if (coords.length >= 2) {
+        const offset = 15;
+        const line = document.createElementNS(svgNS,'line');
+        line.setAttribute('x1', coords[coords.length - 2].xPos + offset);
+        line.setAttribute('y1', coords[coords.length - 2].yPos + offset);
+        line.setAttribute('x2', coords[coords.length - 1].xPos + offset);
+        line.setAttribute('y2', coords[coords.length - 1].yPos + offset);
+        line.setAttribute('stroke', 'whitesmoke');
+        line.setAttribute('stroke-width', 2);
+        line.setAttribute('class', 'mapPath');
+        map.append(line);
 
-      // set up paths in map to be animated
-      const paths = document.querySelectorAll('.mapPath');
+        // set up paths in map to be animated
+        const paths = document.querySelectorAll('.mapPath');
 
-      paths.forEach(path => {
-        path.style.strokeDasharray = path.getTotalLength();
-        path.style.strokeDashoffset = path.getTotalLength();
-      })
-    }
-  })
+        paths.forEach(path => {
+          path.style.strokeDasharray = path.getTotalLength();
+          path.style.strokeDashoffset = path.getTotalLength();
+        })
+      }
+    })
 });
